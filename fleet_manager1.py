@@ -9,6 +9,8 @@ def main():
             remove_member(names, ranks, divs, ids)
         elif option == 3:
             update_rank(names, ranks, ids)
+        elif option == 4:
+            display_roster (names, ranks, divs, ids)
 def init_database():
     names = ["James T.Kirk", "Leonard McCoy", "Spock", "Montgomery Scott", "Hikaru Sulu", "Nyota Uhura", "Pavel Chekov"]
     ranks = ["Captain", "Lt. Commander", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant", "Ensign" ]
@@ -63,6 +65,10 @@ def update_rank(names, ranks, ids):
     if new_rank not in ranklist:
         print("This is not a valid rank. please enter a valid rank.")
         update_rank(names, ranks, ids)
-    
+def display_roster(names, ranks, divs, ids):
+    print("Crew Roster:")
+    for i in range(len(names)):
+        print(f"name: {names[i]} rank: {ranks[i]} division: {divs[i]} ID: {ids[i]}")
+    return
 main()
 
