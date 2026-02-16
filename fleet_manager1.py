@@ -16,6 +16,10 @@ def main():
             search_crew(names, ranks, divs, ids)
         elif option == 6:
             filter_by_division(names, divs)
+        elif option == 7:
+            calculate_payroll(ranks)
+        elif option == 8:
+            count_officers(ranks)
 
 def init_database():
     names = ["James T.Kirk", "Leonard McCoy", "Spock", "Montgomery Scott", "Hikaru Sulu", "Nyota Uhura", "Pavel Chekov"]
@@ -96,6 +100,41 @@ def filter_by_division(names, divs):
                 print(f"name: {names[i]} Divs: {divs[i]}")
     else:
         print(f"{divfilter} is not a valid division. please enter a valid division.")
-
+def calculate_payroll(ranks):
+    print("You have selected to calculate payroll")
+    tpay = 0
+    for i in range(len(ranks)):
+        if ranks[i] == "Ensign":
+            tpay += 1000
+        elif ranks[i] == "Lt junior grade":
+            tpay += 2000
+        elif ranks[i] == "Lieutenant":
+            tpay += 3000
+        elif ranks[i] == "Commander":
+            tpay += 4000
+        elif ranks[i] == "Captain":
+            tpay += 5000
+        elif ranks[i] == "Lt. Commander":
+            tpay += 6000
+        elif ranks[i] == "Commander":
+            tpay += 7000
+        elif ranks[i] == "Rear Admiral":
+            tpay += 8000
+        elif ranks[i] == "Vice Admiral":
+            tpay += 9000
+        elif ranks[i] == "Admiral":
+            tpay += 10000
+        elif ranks[i] == "Fleet Admiral":
+            tpay += 11000
+        print(f"The total payroll for the crew is: {tpay}")
+    
+    
+def count_officers(ranks):
+    print("You have selected to count officers")
+    officercount = 0
+    for i in range(len(ranks)):
+        if ranks[i] in ranklist:
+         officercount += 1
+        print(f"The total number of officers is {officercount}")
 main()
 
