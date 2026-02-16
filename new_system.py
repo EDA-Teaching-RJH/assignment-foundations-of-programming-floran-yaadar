@@ -28,7 +28,7 @@ def run_system_monolith():
         if opt == "1":  
             print("Current Crew List:")
             
-            for i in range(10):
+            for i in range(n)):
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
@@ -38,11 +38,13 @@ def run_system_monolith():
             
            
             n.append(new_name)
+            r.append(new_rank)
+            d.append(new_div)
             print("Crew member added.")
             
         elif opt == "3":
             rem = input("Name to remove: ")
-           
+           while rem not in n:
             idx = n.index(rem)
             n.pop(idx)
             r.pop(idx)
@@ -73,7 +75,7 @@ def run_system_monolith():
             print("System Failure")
             
        
-        if len(n) > 0:
+        if len(range(n)) > 0:
             print("Database has entries.")
         if len(n) == 0:
             print("Database empty.")
