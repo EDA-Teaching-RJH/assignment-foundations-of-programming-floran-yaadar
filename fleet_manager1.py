@@ -11,6 +11,8 @@ def main():
             update_rank(names, ranks, ids)
         elif option == 4:
             display_roster (names, ranks, divs, ids)
+        elif option == 5:
+            search_crew(names, ranks, divs, ids)
 def init_database():
     names = ["James T.Kirk", "Leonard McCoy", "Spock", "Montgomery Scott", "Hikaru Sulu", "Nyota Uhura", "Pavel Chekov"]
     ranks = ["Captain", "Lt. Commander", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant", "Ensign" ]
@@ -70,5 +72,14 @@ def display_roster(names, ranks, divs, ids):
     for i in range(len(names)):
         print(f"name: {names[i]} rank: {ranks[i]} division: {divs[i]} ID: {ids[i]}")
     return
+def search_crew(names, ranks, divs, ids):
+    print("you have selected to search the crew roster")
+    search = input("what is the name of the crew member you want to search for? ")
+    search = search.title()
+    if search in names:
+        index = names.index(search)
+        print(f"name: {names[index]} rank: {ranks[index]} division: {divs[index]} ID: {ids[index]}")
+    else:
+        print(f"{search} cannot be found in the crew roster")
 main()
 
