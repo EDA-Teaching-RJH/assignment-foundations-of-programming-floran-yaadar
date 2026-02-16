@@ -1,12 +1,13 @@
 def main():
+    ranklist = ["Captain", "Lt. Commander", "Commander", "Lieutenant", "Ensign", "Lt junior grade", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral"]
     names, ranks, divs, ids = init_database()
     while True:
         option = display_menu()
         if option == 1:
          add_member(names, ranks, divs, ids)
-        elif option ==2:
+        elif option == 2:
             remove_member(names, ranks, divs, ids)
-        elif option ==3:
+        elif option == 3:
             update_rank(names, ranks, ids)
 def init_database():
     names = ["James T.Kirk", "Leonard McCoy", "Spock", "Montgomery Scott", "Hikaru Sulu", "Nyota Uhura", "Pavel Chekov"]
@@ -49,5 +50,19 @@ def remove_member(names, ranks, divs, ids):
     else:
         print(f"{name_to_remove} cannot be found in the crew roster")
 def update_rank(names, ranks, ids):
+    print("you have selected update rank")
+    name_to_update = input("what is the name of the member you want to update? ")
+    name_to_update = name_to_update.title()
+    if name_to_update in names:
+        index = names.index(name_to_update)
+        new_rank = input("what is the new rank of the member? ")
+        ranks[index] = new_rank
+        print(f"{name_to_update} has been updated to {new_rank}")
+    else:
+        print(f"{name_to_update} cannot be found in the crew roster")
+    if new_rank not in ranklist:
+        print("This is not a valid rank. please enter a valid rank.")
+        update_rank(names, ranks, ids)
+    
 main()
 
