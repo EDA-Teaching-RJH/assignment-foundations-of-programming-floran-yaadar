@@ -1,5 +1,6 @@
+ranklist = ["Captain", "Lt. Commander", "Commander", "Lieutenant", "Ensign", "Lt junior grade", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral"]
+divlist = ["Command", "Science", "Operations", "Medical", "Engineering", "Security", "Communications", "Navigation", "Tactical"]
 def main():
-    ranklist = ["Captain", "Lt. Commander", "Commander", "Lieutenant", "Ensign", "Lt junior grade", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral"]
     names, ranks, divs, ids = init_database()
     while True:
         option = display_menu()
@@ -13,6 +14,9 @@ def main():
             display_roster (names, ranks, divs, ids)
         elif option == 5:
             search_crew(names, ranks, divs, ids)
+        elif option == 6:
+            filter_by_division(names, divs)
+
 def init_database():
     names = ["James T.Kirk", "Leonard McCoy", "Spock", "Montgomery Scott", "Hikaru Sulu", "Nyota Uhura", "Pavel Chekov"]
     ranks = ["Captain", "Lt. Commander", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant", "Ensign" ]
@@ -22,7 +26,7 @@ def init_database():
 def display_menu():
     Username = input("please enter your username here: ")
     print(f"Hello {Username}, please pick an option below")
-    option = int(input("1 -Add Member\n2 -remove member\n3 -update rank\n4 -display roster\n5 -search crew\n6 -filter by division\n7 -calculate payroll\n8 -Count officers\n9 -Accessthe Database"))
+    option = int(input("1 -Add Member\n2 -remove member\n3 -update rank\n4 -display roster\n5 -search crew\n6 -filter by division\n7 -calculate payroll\n8 -Count officers\n9 -Accessthe Database\n"))
     print(option)
     return option
 def add_member(names, ranks, divs, ids):
@@ -81,5 +85,17 @@ def search_crew(names, ranks, divs, ids):
         print(f"name: {names[index]} rank: {ranks[index]} division: {divs[index]} ID: {ids[index]}")
     else:
         print(f"{search} cannot be found in the crew roster")
+def filter_by_division(names, divs):
+    print("you have selected to filter by division")
+    divfilter = input("whatd division do you want to filter by? ")
+    divfilter = divfilter.title()
+    if divfilter in divlist:
+        print(f"crew members in the {divfilter} division:")
+        for i in range(len(names)):
+            if divs[i] == divfilter:
+                print(f"name: {names[i]} Divs: {divs[i]}")
+    else:
+        print(f"{divfilter} is not a valid division. please enter a valid division.")
+
 main()
 
